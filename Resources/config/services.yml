@@ -1,4 +1,4 @@
 services:
-#    boda_edi_parser.example:
-#        class: Boda\EdiParserBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    boda_edi_parser.example:
+        class: Boda\EdiParserBundle\Parser\PositionalEdiParser
+        arguments: ["@service_id", "plain_value", "%parameter%"]
