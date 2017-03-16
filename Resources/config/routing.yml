@@ -1,0 +1,3 @@
+boda_edi_parser_homepage:
+    path:     /
+    defaults: { _controller: BodaEdiParserBundle:Default:index }
