@@ -70,3 +70,38 @@ class ParserController extends Controller
     }
 }
 ```
+
+Result
+```php
+array:5 [▼
+  0 => array:5 [▼
+    "IDENTIFIER" => "00"
+    "DOT" => "."
+    "NUMBER" => "00"
+    "TEST" => " "
+    "HEADER" => "HEADER"
+  ]
+  1 => array:5 []
+  2 => array:5 [▼
+    "IDENTIFIER" => "41"
+    "DOT" => "."
+    "NUMBER" => "00"
+    "TEST" => " "
+    "CONTENT" => "CONTENT2"
+  ]
+  3 => array:5 [▼
+    "IDENTIFIER" => "41"
+    "DOT" => "."
+    "NUMBER" => "00"
+    "TEST" => " "
+    "CONTENT" => "CONTENT3"
+  ]
+  4 => array:5 [▼
+    "IDENTIFIER" => "99"
+    "DOT" => "."
+    "NUMBER" => "00"
+    "TEST" => " "
+    "CONTENT" => "FOOTER"
+  ]
+]
+```
