@@ -1,7 +1,7 @@
 
 {
   "name" : "boda/edi-parser",
-  "description" : "A demo bundle",
+  "description" : "A simple positional EDI parser",
   "type" : "symfony-bundle",
   "license": "Apache-2.0",
   "authors" : [{
