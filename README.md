@@ -5,10 +5,10 @@ A simple positional edi parser to transform a string to a key-value array based 
 
 ## Installation
 
-Installation using composer is really easy: this command will add `"boda/edi-parser-bundle"` to your composer.json
+Installation using composer is really easy: this command will add `"boda/edi-parser"` to your composer.json
 and will download the bundle:
 
-	php composer.phar require boda/edi-parser-bundle
+	composer require boda/edi-parser
 
 Enable the bundle in your kernel:
 ```php
