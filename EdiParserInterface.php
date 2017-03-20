@@ -8,11 +8,14 @@
 
 namespace Boda\EdiParserBundle;
 
-interface PositionalEdiParserInterface
+interface EdiParserInterface
 {
     /**
-     * @param array $arguments
+     * @param array $header
+     * @param array $content
+     * @param array $footer
+     * @param array $file
      * @return string
      */
-    public function parse(array $arguments=[]);
+    public function parse(array $header= [], array $content = [], array $footer = [], array $file = []);
 }
