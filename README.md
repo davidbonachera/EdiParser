@@ -71,7 +71,7 @@ class ParserController extends Controller
 }
 ```
 
-Result
+## Result
 ```php
 array:5 [▼
   0 => array:5 [▼
@@ -81,21 +81,15 @@ array:5 [▼
     "TEST" => " "
     "HEADER" => "HEADER"
   ]
-  1 => array:5 []
-  2 => array:5 [▼
+  1 => array:5 [▼
     "IDENTIFIER" => "41"
     "DOT" => "."
     "NUMBER" => "00"
     "TEST" => " "
-    "CONTENT" => "CONTENT2"
+    "CONTENT" => "CONTENT1"
   ]
-  3 => array:5 [▼
-    "IDENTIFIER" => "41"
-    "DOT" => "."
-    "NUMBER" => "00"
-    "TEST" => " "
-    "CONTENT" => "CONTENT3"
-  ]
+  2 => array:5 [▶] // Same as 1
+  3 => array:5 [▶] // Same as 1
   4 => array:5 [▼
     "IDENTIFIER" => "99"
     "DOT" => "."
