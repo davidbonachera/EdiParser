@@ -38,59 +38,92 @@ class ParserController extends Controller
 
         $parser = $this->get('boda_edi_parser.positional');
 
-        $header = [
-            "IDENTIFIER"=>2,
-            "DOT"=>1,
-            "NUMBER"=>2,
-            "TEST"=>1,
-            "HEADER"=>6,
-        ];
-        $lengths = [
-            "IDENTIFIER"=>2,
-            "DOT"=>1,
-            "NUMBER"=>2,
-            "TEST"=>1,
-            "CONTENT"=>8,
-        ];
-        $footer = [
-            "IDENTIFIER"=>2,
-            "DOT"=>1,
-            "NUMBER"=>2,
-            "TEST"=>1,
-            "CONTENT"=>6,
+        $template =  [
+            "header" => [
+                "IDENTIFIER"=>2,
+                "DOT"=>1,
+                "NUMBER"=>2,
+                "TEST"=>1,
+                "HEADER"=>6,
+            ],
+            "body" => [
+                "41.00" => [
+                    "IDENTIFIER"=>2,
+                    "DOT"=>1,
+                    "NUMBER"=>2,
+                    "TEST"=>1,
+                    "CONTENT"=>8,
+                ],
+                "lines" => [
+                    "41.20" => [
+                        "IDENTIFIER"=>2,
+                        "DOT"=>1,
+                        "NUMBER"=>2,
+                        "TEST"=>1,
+                        "CONTENT"=>8,
+                        "SPACE"=>1,
+                        "SUBLINE"=>7
+                    ]
+                ]
+            ],
+            "footer" => [
+                "IDENTIFIER"=>2,
+                "DOT"=>1,
+                "NUMBER"=>2,
+                "TEST"=>1,
+                "CONTENT"=>6,
+            ]
         ];
         $rows = [
             "00.00 HEADER",
             "41.00 CONTENT1",
-            "41.00 CONTENT2",
+            "41.20 CONTENT2 subline",
             "41.00 CONTENT3",
             "99.00 FOOTER"
         ];
-        $resultEdi = $parser->parse($header, $lengths, $footer, $rows);
+        $resultEdi = $parser->parse($template, $rows);
     }
 }
 ```
 
 ## Result
 ```php
-array:5 [▼
-  0 => array:5 [▼
+array:4 [▼
+  0 => array:5 [▼ // Header
     "IDENTIFIER" => "00"
     "DOT" => "."
     "NUMBER" => "00"
     "TEST" => " "
     "HEADER" => "HEADER"
   ]
-  1 => array:5 [▼
-    "IDENTIFIER" => "41"
-    "DOT" => "."
-    "NUMBER" => "00"
-    "TEST" => " "
-    "CONTENT" => "CONTENT1"
+  1 => array:2 [▼ // Group 1
+    0 => array:5 [▼ // Group 1 header
+      "IDENTIFIER" => "41"
+      "DOT" => "."
+      "NUMBER" => "00"
+      "TEST" => " "
+      "CONTENT" => "CONTENT1"
+    ]
+    1 => array:7 [▼ // Group 1 line
+      "IDENTIFIER" => "41"
+      "DOT" => "."
+      "NUMBER" => "20"
+      "TEST" => " "
+      "CONTENT" => "CONTENT2"
+      "SPACE" => " "
+      "SUBLINE" => "subline"
+    ]
   ]
-  2 => array:5 [▶] // Same as 1
-  3 => array:5 [▶] // Same as 1
-  4 => array:5 [▼
+  2 => array:1 [▼ // Group 2
+    0 => array:5 [▼ // Group 2 header
+      "IDENTIFIER" => "41"
+      "DOT" => "."
+      "NUMBER" => "00"
+      "TEST" => " "
+      "CONTENT" => "CONTENT3"
+    ]
+  ]
+  3 => array:5 [▼ // Footer
     "IDENTIFIER" => "99"
     "DOT" => "."
     "NUMBER" => "00"
