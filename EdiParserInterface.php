@@ -11,11 +11,10 @@ namespace Boda\EdiParserBundle;
 interface EdiParserInterface
 {
     /**
-     * @param array $header
-     * @param array $content
-     * @param array $footer
+     * @param array $template
      * @param array $file
+     * @param int   $identifierSize
      * @return string
      */
-    public function parse(array $header= [], array $content = [], array $footer = [], array $file = []);
+    public function parse(array $template = [], array $file = [], $identifierSize);
 }
