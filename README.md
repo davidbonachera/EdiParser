@@ -139,3 +139,4 @@ array:3 [▼
 Well, a lot of stuff to improve I guess, let's do a list
 
 - [ ] Customize with configuration (with or without header/footer, nested level)
+- [ ] Do some proper error handling for missing arguments
