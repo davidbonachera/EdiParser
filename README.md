@@ -88,7 +88,7 @@ class ParserController extends Controller
 
 ## Result
 ```php
-array:4 [▼
+array:3 [▼
   0 => array:5 [▼ // Header
     "IDENTIFIER" => "00"
     "DOT" => "."
@@ -96,34 +96,36 @@ array:4 [▼
     "TEST" => " "
     "HEADER" => "HEADER"
   ]
-  1 => array:2 [▼ // Group 1
-    0 => array:5 [▼ // Group 1 header
-      "IDENTIFIER" => "41"
-      "DOT" => "."
-      "NUMBER" => "00"
-      "TEST" => " "
-      "CONTENT" => "CONTENT1"
+  1 => array:2 [▼ // Body
+    1 => array:2 [▼ // Group 1
+      0 => array:5 [▼ // Group 1 header
+        "IDENTIFIER" => "41"
+        "DOT" => "."
+        "NUMBER" => "00"
+        "TEST" => " "
+        "CONTENT" => "CONTENT1"
+      ]
+      1 => array:7 [▼ // Group 1 line
+        "IDENTIFIER" => "41"
+        "DOT" => "."
+        "NUMBER" => "20"
+        "TEST" => " "
+        "CONTENT" => "CONTENT2"
+        "SPACE" => " "
+        "SUBLINE" => "subline"
+      ]
     ]
-    1 => array:7 [▼ // Group 1 line
-      "IDENTIFIER" => "41"
-      "DOT" => "."
-      "NUMBER" => "20"
-      "TEST" => " "
-      "CONTENT" => "CONTENT2"
-      "SPACE" => " "
-      "SUBLINE" => "subline"
+    2 => array:1 [▼ // Group 2
+      0 => array:5 [▼ // Group 2 header
+        "IDENTIFIER" => "41"
+        "DOT" => "."
+        "NUMBER" => "00"
+        "TEST" => " "
+        "CONTENT" => "CONTENT3"
+      ]
     ]
   ]
-  2 => array:1 [▼ // Group 2
-    0 => array:5 [▼ // Group 2 header
-      "IDENTIFIER" => "41"
-      "DOT" => "."
-      "NUMBER" => "00"
-      "TEST" => " "
-      "CONTENT" => "CONTENT3"
-    ]
-  ]
-  3 => array:5 [▼ // Footer
+  2 => array:5 [▼ // Footer
     "IDENTIFIER" => "99"
     "DOT" => "."
     "NUMBER" => "00"
