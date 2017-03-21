@@ -86,7 +86,7 @@ class ParserController extends Controller
 }
 ```
 
-## Result
+### Result
 ```php
 array:3 [▼
   0 => array:5 [▼ // Header
@@ -134,3 +134,8 @@ array:3 [▼
   ]
 ]
 ```
+
+## To-Do
+Well, a lot of stuff to improve I guess, let's do a list
+
+- [ ] Customize with configuration (with or without header/footer, nested level)
