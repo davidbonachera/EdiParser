@@ -62,7 +62,7 @@ class ParserController extends Controller
                         "TEST"=>1,
                         "CONTENT"=>8,
                         "SPACE"=>1,
-                        "SUBLINE"=>7
+                        "SUBLINE"=>8
                     ]
                 ]
             ],
@@ -77,7 +77,8 @@ class ParserController extends Controller
         $rows = [
             "00.00 HEADER",
             "41.00 CONTENT1",
-            "41.20 CONTENT2 subline",
+            "41.20 CONTENT2 subline1",
+            "41.20 CONTENT2 subline2",
             "41.00 CONTENT3",
             "99.00 FOOTER"
         ];
