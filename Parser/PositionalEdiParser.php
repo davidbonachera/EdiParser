@@ -29,13 +29,14 @@ class PositionalEdiParser implements EdiParserInterface
             $this->errors["template"] = "No template given";
             return $this->errors;
         }
+        // Init array
+        $my_array = [];
         // Init counter
         $i = 0;
         // SubBody counter
         $j = 0;
         $previousValue = null;
         // Count all lines
-        $my_array = [];
         $len = count($file);
         foreach($file as $row) {
             if ($i == 0) { // First Line (header)
