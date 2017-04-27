@@ -35,6 +35,7 @@ class PositionalEdiParser implements EdiParserInterface
         $j = 0;
         $previousValue = null;
         // Count all lines
+        $my_array = [];
         $len = count($file);
         foreach($file as $row) {
             if ($i == 0) { // First Line (header)
