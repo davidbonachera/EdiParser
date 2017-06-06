@@ -14,7 +14,6 @@ Enable the bundle in your kernel:
 ```php
 <?php
 // app/AppKernel.php
-
 public function registerBundles()
 {
 	$bundles = array(
@@ -90,14 +89,14 @@ class ParserController extends Controller
 ### Result
 ```php
 array:3 [▼
-  0 => array:5 [▼ // Header
+  "header" => array:5 [▼ // Header
     "IDENTIFIER" => "00"
     "DOT" => "."
     "NUMBER" => "00"
     "TEST" => " "
     "HEADER" => "HEADER"
   ]
-  1 => array:2 [▼ // Body
+  "body" => array:2 [▼ // Body
     1 => array:2 [▼ // Group 1
       0 => array:5 [▼ // Group 1 header
         "IDENTIFIER" => "41"
@@ -117,16 +116,10 @@ array:3 [▼
       ]
     ]
     2 => array:1 [▼ // Group 2
-      0 => array:5 [▼ // Group 2 header
-        "IDENTIFIER" => "41"
-        "DOT" => "."
-        "NUMBER" => "00"
-        "TEST" => " "
-        "CONTENT" => "CONTENT3"
-      ]
+      0 => array:5 [...] // Group 2 header
     ]
   ]
-  2 => array:5 [▼ // Footer
+  "footer" => array:5 [▼ // Footer
     "IDENTIFIER" => "99"
     "DOT" => "."
     "NUMBER" => "00"
