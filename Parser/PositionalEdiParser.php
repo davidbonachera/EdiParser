@@ -30,14 +30,14 @@ class PositionalEdiParser implements EdiParserInterface
         $myArray["header"] = $this->formatLine($template["header"], $rows[0]);
         for ($i = 1; $i < count($rows) - 1; $i++) {
             foreach ($template["body"] as $index => $templateSubBody) {
-                if (substr($rows[$i], 0, $identifierSize) == $index) {
+                if (substr($rows[$i], 0, $identifierSize) === $index) {
                     $j++;
                     $myArray["body"][$j][] = $this->formatLine($templateSubBody, $rows[$i]);
                     continue;
                 }
                 if (is_array($templateSubBody)) {
                     foreach ($templateSubBody as $index2 => $templateSubBody2) {
-                        if (substr($rows[$i], 0, $identifierSize) == $index2) {
+                        if (substr($rows[$i], 0, $identifierSize) === $index2) {
                             $myArray["body"][$j][] = $this->formatLine($templateSubBody2, $rows[$i]);
                         }
                     }
