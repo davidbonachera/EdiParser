@@ -12,65 +12,43 @@ use Boda\EdiParserBundle\EdiParserInterface;
 
 class PositionalEdiParser implements EdiParserInterface
 {
-
-    /**
-     * @var array parsed EDI file
-     */
-    private $parsedfile;
-
     /**
      * @var array
      */
     private $errors = [];
 
-    public function parse(array $template = [], array $file = [], $identifierSize=5)
+    public function parse(array $template = [], array $rows = [], $identifierSize=5)
     {
         if (empty($template)) {
             $this->errors["template"] = "No template given";
-            return $this->errors;
+            return false;
         }
         // Init array
         $my_array = [];
-        // Init counter
-        $i = 0;
         // SubBody counter
         $j = 0;
-        $previousValue = null;
-        // Count all lines
-        $len = count($file);
-        foreach($file as $row) {
-            if ($i == 0) { // First Line (header)
-                $my_array[] = $this->formatLine($template["header"], $row);
-                $i++;
-                continue;
-            } else if ($i == $len-1) { // Last Line (footer)
-                $my_array[] = $this->formatLine($template["footer"], $row);
-                $i++;
-                continue;
-            }
+        $my_array["header"] = $this->formatLine($template["header"], $rows[0]);
+        for ($i = 1; $i < count($rows) - 1; $i++) {
             if(is_array($template["body"])) {
                 foreach ($template["body"] as $index => $templateSubBody) {
-                    if (substr($row, 0, $identifierSize)==$index) {
+                    if (substr($rows[$i], 0, $identifierSize)==$index) {
                         $j++;
-                        $my_array[1][$j][]= $this->formatLine($templateSubBody,$row);
+                        $my_array["body"][$j][]= $this->formatLine($templateSubBody,$rows[$i]);
                         continue;
                     }
                     if(is_array($templateSubBody)) {
                         foreach ($templateSubBody as $index2 => $templateSubBody2) {
-                            if(substr($row, 0, $identifierSize)==$index2) {
-                                $my_array[1][$j][] = $this->formatLine($templateSubBody2,$row);
+                            if(substr($rows[$i], 0, $identifierSize)==$index2) {
+                                $my_array["body"][$j][] = $this->formatLine($templateSubBody2,$rows[$i]);
                             }
                         }
                     }
                 }
-                $i++;
                 continue;
             }
-            // add current row to an array
-            $i++;
         }
+        $my_array["footer"] = $this->formatLine($template["footer"], $rows[count($rows) - 1]);
         return $my_array;
-
     }
     public function formatLine($template, $data, $position=0) {
         $my_data=[];
