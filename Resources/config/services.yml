@@ -1,3 +1,6 @@
 services:
-    boda_edi_parser.positional:
-        class: Boda\EdiParserBundle\Parser\PositionalEdiParser
+    boda_edi_parser.reader:
+        class: Boda\EdiParserBundle\Parser\Reader
+
+    boda_edi_parser.writer:
+        class: Boda\EdiParserBundle\Parser\Writer
