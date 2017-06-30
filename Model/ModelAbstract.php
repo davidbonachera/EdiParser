@@ -30,7 +30,7 @@ abstract class ModelAbstract
      * @var array $footer
      */
     protected $footer = array();
-    
+
     /**
      * Validation
      *
@@ -45,7 +45,7 @@ abstract class ModelAbstract
      */
     public function __construct($validation = false)
     {
-        $this->validate = $validation;
+        $this->validation = $validation;
     }
 
     /**
@@ -62,6 +62,17 @@ abstract class ModelAbstract
     public function setValidation($validation)
     {
         $this->validation = $validation;
+    }
+
+    /**
+     * @var array $data
+     */
+    public function setHeader($data)
+    {
+        if ($this->validation) {
+            dump($data);
+        }
+        $this->header = $data;
     }
 
     public function convert_array_to_obj_recursive($a) {

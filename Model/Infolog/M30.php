@@ -57,7 +57,7 @@ class M30 extends ModelAbstract
         "RCTEXC"=> null,
         "DATEXC"=> null,
         "HEUEXC"=> null,
-        "NUMEXC "=> null,
+        "NUMEXC"=> null,
         "CPTEXC"=> null,
         "ERREXC "=> null,
         "IDEMSG "=> null,
@@ -70,74 +70,7 @@ class M30 extends ModelAbstract
      * @var array $templateData
      */
     protected static $templateData = array(
-        // Déclarations clients (obligatoire)
-        "20.00" => array(
-            "CODEXC"=> null,
-            "SEPEXC"=> null,
-            "SCOEXC"=> null,
-            "TRTEXC"=> null,
-            "CODACT"=> null,
-            "CODCLI"=> null,
-            "TYPCLI"=> null,
-            "CATCLI"=> null,
-            "CLILIV"=> null,
-            "EDICLI"=> null,
-            "NOMCLI"=> null,
-            "AD1CLI"=> null,
-            "AD2CLI"=> null,
-            "CPOCLI"=> null,
-            "VILCLI"=> null,
-            "PAYCLI"=> null,
-            "TELCLI"=> null,
-            "FAXCLI"=> null,
-            "TLXCLI"=> null,
-            "CODLGE"=> null,
-            "CODDEV"=> null,
-            "IGLSIT"=> null,
-            "PTYCLI"=> null,
-            "ETACLI"=> null,
-            "DISEXC"=> null,
-        ),
-
-        // Declarations clients (Facultatif)
-        "20.01" => array(
-            "CODEXC"=> null,
-            "SEPEXC"=> null,
-            "SCOEXC"=> null,
-            "TRTEXC"=> null,
-            "CODACT"=> null,
-            "CODCLI"=> null,
-            "RSPCLI"=> null,
-            "CODMOP"=> null,
-            "CODRGT"=> null,
-            "CODTRA"=> null,
-            "TOULIV"=> null,
-            "ORDLIV"=> null,
-            "KAILIV"=> null,
-            "GSTALC"=> null,
-            "PTYDES"=> null,
-            "NUMACS"=> null,
-            "CPICLI"=> null,
-            "TVACCE"=> null,
-            "IDEALC"=> null,
-            "DISEXC"=> null,
-        ),
-
-        // Déclaration clients (Partie 2:Facultatif)
-        "20.02" => array(
-            "CODEXC"=> null,
-            "SEPEXC"=> null,
-            "SCOEXC"=> null,
-            "TRTEXC"=> null,
-            "CODACT"=> null,
-            "CODCLI"=> null,
-            "CM1CLI"=> null,
-            "CM2CLI"=> null,
-            "CM3CLI"=> null,
-            "EMLADR"=> null,
-            "CPICLI"=> null,
-            "DISEXC"=> null,
-        ),
+        // 
     );
 
     public function __construct($validation=true)

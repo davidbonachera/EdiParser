@@ -34,6 +34,14 @@ class Writer
         return true;
     }
 
+    public function setHeader(array $data) {
+        $this->model->setHeader($data);
+    }
+
+    public function insertOne(array $data) {
+        $this->model;
+    }
+
     /**
      * @return ModelAbstract
      */
