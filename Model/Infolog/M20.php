@@ -57,10 +57,10 @@ class M20 extends ModelAbstract
         "RCTEXC"=> null,
         "DATEXC"=> null,
         "HEUEXC"=> null,
-        "NUMEXC "=> null,
+        "NUMEXC"=> null,
         "CPTEXC"=> null,
-        "ERREXC "=> null,
-        "IDEMSG "=> null,
+        "ERREXC"=> null,
+        "IDEMSG"=> null,
         "DEBFIN"=> null,
         "DISEXC"=> null,
     ];
@@ -139,15 +139,4 @@ class M20 extends ModelAbstract
             "DISEXC"=> null,
         ),
     );
-
-    public function __construct($validation=true)
-    {
-        parent::__construct($validation);
-        //$this->data = parent::convert_array_to_obj_recursive($this->templateData);
-    }
-    
-    public function validate()
-    {
-        // TODO: Implement validate() method.
-    }
 }

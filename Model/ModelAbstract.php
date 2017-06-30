@@ -70,7 +70,7 @@ abstract class ModelAbstract
     public function setHeader($data)
     {
         if ($this->validation) {
-            dump($data);
+            $this->validate();
         }
         $this->header = $data;
     }

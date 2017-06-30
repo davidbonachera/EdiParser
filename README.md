@@ -35,7 +35,7 @@ class ParserController extends Controller
      */
     public function indexAction(Request $request) {
 
-        $parser = $this->get('boda_edi_parser.positional');
+        $reader = $this->get('boda_edi_parser.reader');
 
         $template =  [
             "header" => [
@@ -81,7 +81,7 @@ class ParserController extends Controller
             "41.00 CONTENT3",
             "99.00 FOOTER"
         ];
-        $resultEdi = $parser->parse($template, $rows);
+        $resultEdi = $reader->parse($template, $rows);
     }
 }
 ```
