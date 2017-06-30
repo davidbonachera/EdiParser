@@ -8,6 +8,8 @@
 
 namespace Boda\EdiParserBundle\Parser;
 
+use Boda\EdiParserBundle\Model\ModelAbstract;
+
 class Writer
 {
     /**
@@ -15,14 +17,37 @@ class Writer
      */
     private $errors = [];
 
-    public function parse(array $template = [], array $file = [], $identifierSize)
+    /**
+     * Model
+     *
+     * @var ModelAbstract
+     */
+    private $model;
+
+    public function __construct()
     {
         // TODO: Implement parse() method.
     }
 
-    public function write(array $template = [], array $rows = [])
+    public function write()
     {
-        return $template;
+        return true;
+    }
+
+    /**
+     * @return ModelAbstract
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * @param ModelAbstract $model
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
     }
 
     /**
