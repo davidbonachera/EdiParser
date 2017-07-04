@@ -12,6 +12,7 @@
     "symfony3","edi"
   ],
   "require" : {
+    "respect/validation": "^1.1"
   },
   "minimum-stability": "dev",
   "autoload" : {
