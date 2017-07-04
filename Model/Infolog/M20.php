@@ -161,4 +161,9 @@ class M20 extends ModelAbstract
     {
         return static::$validationTemplateData;
     }
+
+    public function __toString()
+    {
+        return "M20";
+    }
 }

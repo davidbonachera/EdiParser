@@ -53,10 +53,15 @@ class Writer
             if(is_null($value)) {
                 $value = str_repeat(" ", $validationTemplate[$key]["length"]);
             } else {
-                if(!empty($validationTemplate[$key]["numerical"])) {
-                    $value = str_repeat("0", $validationTemplate[$key]["length"]-strlen($value)).$value;
-                } else {
-                    $value = $value.str_repeat(" ", $validationTemplate[$key]["length"]-strlen($value));
+                $offset = $validationTemplate[$key]["length"]-strlen($value);
+                if($offset>0) {
+                    if(!empty($validationTemplate[$key]["numerical"])) {
+                        $value = str_repeat("0", $offset).$value;
+                    } else {
+                        $value = $value.str_repeat(" ", $validationTemplate[$key]["length"]-strlen($value));
+                    }
+                } elseif ($offset<0) {
+                    continue;
                 }
 
             }
@@ -78,7 +83,14 @@ class Writer
         return $this->model->getTemplateFooter();
     }
 
-    public function setHeader(array $data) {
+    public function setHeader($modelName) {
+        $data = $this->getTemplateHeader();
+        $data["TRTEXC"]="1";
+        $data["DATEXC"]=date("Ymd");
+        $data["HEUEXC"]=date("His");
+        $data["RCTEXC"]="DATAQ ".$modelName;
+        $data["NOMDTQ"]=$modelName;
+        $data["LIBEXC"]=$modelName."|".date("m/d|H:i:s")."|HUBBLE";
         $this->model->setHeader($data);
     }
 
@@ -86,7 +98,11 @@ class Writer
         $this->model->insertOne($data, $dataKey);
     }
 
-    public function setFooter(array $data) {
+    public function setFooter(array $data, $modelName) {
+        $data["TRTEXC"]="1";
+        $data["DATEXC"]=date("Ymd");
+        $data["HEUEXC"]=date("His");
+        $data["RCTEXC"]="DATAQ ".$modelName;
         $this->model->setFooter($data);
     }
 
