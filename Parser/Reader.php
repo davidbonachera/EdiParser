@@ -8,9 +8,7 @@
 
 namespace Boda\EdiParserBundle\Parser;
 
-use Boda\EdiParserBundle\EdiParserInterface;
-
-class PositionalEdiParser implements EdiParserInterface
+class Reader
 {
     /**
      * @var array
@@ -31,8 +29,8 @@ class PositionalEdiParser implements EdiParserInterface
         for ($i = 1; $i < count($rows) - 1; $i++) {
             foreach ($template["body"] as $index => $templateSubBody) {
                 if (substr($rows[$i], 0, $identifierSize) === $index) {
-                    $j++;
                     $myArray["body"][$j][] = $this->formatLine($templateSubBody, $rows[$i]);
+                    $j++;
                     continue;
                 }
                 if (is_array($templateSubBody)) {
