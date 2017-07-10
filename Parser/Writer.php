@@ -26,7 +26,7 @@ class Writer
 
     public function writeFile($path)
     {
-        $file = fopen($path."M20-".date("YmdHis").".txt", "w") or die("Unable to open file!");
+        $file = fopen($path.$this->getModel()->__toString().date("YmdHis").".txt", "w") or die("Unable to open/create file!");
         // Write Header
         $str = $this->writeLine($this->model->getHeader(), $this->model->getValidationTemplateHeader())."\n";
         fwrite($file, $str);
