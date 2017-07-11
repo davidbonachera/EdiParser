@@ -83,7 +83,8 @@ class Writer
         return $this->model->getTemplateFooter();
     }
 
-    public function setHeader($modelName) {
+    public function setHeader($modelName=null) {
+        $modelName = $modelName?$modelName:$this->getModel()->__toString();
         $data = $this->getTemplateHeader();
         $data["TRTEXC"]="1";
         $data["DATEXC"]=date("Ymd");
@@ -98,7 +99,8 @@ class Writer
         $this->model->insertOne($data, $dataKey);
     }
 
-    public function setFooter(array $data, $modelName) {
+    public function setFooter(array $data, $modelName=null) {
+        $modelName = $modelName?$modelName:$this->getModel()->__toString();
         $data["TRTEXC"]="1";
         $data["DATEXC"]=date("Ymd");
         $data["HEUEXC"]=date("His");
