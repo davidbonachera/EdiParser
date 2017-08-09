@@ -64,7 +64,8 @@ class Writer
                         $value = $value.str_repeat(" ", $validationTemplate[$key]["length"]-strlen($value));
                     }
                 } elseif ($offset<0) {
-                    continue;
+                    // @ToDo: Log error to say it's too long
+                    $value = substr($value,0, $validationTemplate[$key]["length"]);
                 }
 
             }
