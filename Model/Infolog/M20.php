@@ -1,9 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Enigma
- * Date: 29/6/2017
- * Time: 6:22 PM
+ * This file is part of the EdiParser package.
+ *
+ * @package     EdiParserBundle
+ * @since       0.0.1
+ * @author      davidbonachera
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 namespace Boda\EdiParserBundle\Model\Infolog;
 
@@ -88,39 +92,39 @@ class M20 extends ModelAbstract
 
     public static $validationTemplateData = array(
         "20.00" => array(
-            "CODEXC" => [ "length" => 2, "required" => FALSE ],
-            "SEPEXC" => [ "length" => 1, "required" => FALSE ],
-            "SCOEXC" => [ "length" => 2, "required" => FALSE ],
-            "TRTEXC" => [ "length" => 1, "required" => FALSE ],
-            "CODACT" => [ "length" => 3, "required" => FALSE ],
-            "CODCLI" => [ "length" => 14, "required" => FALSE ],
+            "CODEXC" => [ "length" => 2, "required" => TRUE ],
+            "SEPEXC" => [ "length" => 1, "required" => TRUE ],
+            "SCOEXC" => [ "length" => 2, "required" => TRUE ],
+            "TRTEXC" => [ "length" => 1, "required" => TRUE ],
+            "CODACT" => [ "length" => 3, "required" => TRUE ],
+            "CODCLI" => [ "length" => 14, "required" => TRUE ],
             "TYPCLI" => [ "length" => 1, "required" => FALSE ],
-            "CATCLI" => [ "length" => 3, "required" => FALSE ],
+            "CATCLI" => [ "length" => 3, "required" => TRUE ],
             "CLILIV" => [ "length" => 14, "required" => FALSE ],
             "EDICLI" => [ "length" => 14, "required" => FALSE ],
-            "NOMCLI" => [ "length" => 30, "required" => FALSE ],
-            "AD1CLI" => [ "length" => 30, "required" => FALSE ],
+            "NOMCLI" => [ "length" => 30, "required" => TRUE ],
+            "AD1CLI" => [ "length" => 30, "required" => TRUE ],
             "AD2CLI" => [ "length" => 30, "required" => FALSE ],
             "CPOCLI" => [ "length" => 5, "required" => FALSE ],
-            "VILCLI" => [ "length" => 26, "required" => FALSE ],
+            "VILCLI" => [ "length" => 26, "required" => TRUE ],
             "PAYCLI" => [ "length" => 3, "required" => FALSE ],
             "TELCLI" => [ "length" => 20, "required" => FALSE ],
             "FAXCLI" => [ "length" => 20, "required" => FALSE ],
             "TLXCLI" => [ "length" => 15, "required" => FALSE ],
             "CODLGE" => [ "length" => 3, "required" => FALSE ],
-            "CODDEV" => [ "length" => 3, "required" => FALSE ],
+            "CODDEV" => [ "length" => 3, "required" => TRUE ],
             "IGLSIT" => [ "length" => 3, "required" => FALSE ],
             "PTYCLI" => [ "length" => 3, "required" => FALSE ],
-            "ETACLI" => [ "length" => 2, "required" => FALSE ],
+            "ETACLI" => [ "length" => 2, "required" => TRUE ],
             "DISEXC" => [ "length" => 8, "required" => FALSE ],
         ),
         "20.01" => array(
-            "CODEXC" => [ "length" => 2, "required" => FALSE ],
-            "SEPEXC" => [ "length" => 1, "required" => FALSE ],
-            "SCOEXC" => [ "length" => 2, "required" => FALSE ],
+            "CODEXC" => [ "length" => 2, "required" => TRUE ],
+            "SEPEXC" => [ "length" => 1, "required" => TRUE ],
+            "SCOEXC" => [ "length" => 2, "required" => TRUE ],
             "TRTEXC" => [ "length" => 1, "required" => FALSE ],
-            "CODACT" => [ "length" => 3, "required" => FALSE ],
-            "CODCLI" => [ "length" => 14, "required" => FALSE ],
+            "CODACT" => [ "length" => 3, "required" => TRUE ],
+            "CODCLI" => [ "length" => 14, "required" => TRUE ],
             "RSPCLI" => [ "length" => 30, "required" => FALSE ],
             "CODMOP" => [ "length" => 3, "required" => FALSE ],
             "CODRGT" => [ "length" => 3, "required" => FALSE ],
@@ -137,12 +141,12 @@ class M20 extends ModelAbstract
             "DISEXC" => [ "length" => 34, "required" => FALSE ],
         ),
         "20.02" => array(
-            "CODEXC" => [ "length" => 2, "required" => FALSE ],
-            "SEPEXC" => [ "length" => 1, "required" => FALSE ],
-            "SCOEXC" => [ "length" => 2, "required" => FALSE ],
-            "TRTEXC" => [ "length" => 1, "required" => FALSE ],
-            "CODACT" => [ "length" => 3, "required" => FALSE ],
-            "CODCLI" => [ "length" => 14, "required" => FALSE ],
+            "CODEXC" => [ "length" => 2, "required" => TRUE ],
+            "SEPEXC" => [ "length" => 1, "required" => TRUE ],
+            "SCOEXC" => [ "length" => 2, "required" => TRUE ],
+            "TRTEXC" => [ "length" => 1, "required" => TRUE ],
+            "CODACT" => [ "length" => 3, "required" => TRUE ],
+            "CODCLI" => [ "length" => 14, "required" => TRUE ],
             "CM1CLI" => [ "length" => 45, "required" => FALSE ],
             "CM2CLI" => [ "length" => 45, "required" => FALSE ],
             "CM3CLI" => [ "length" => 45, "required" => FALSE ],
