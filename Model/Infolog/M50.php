@@ -22,9 +22,9 @@ class M50 extends ModelAbstract
     public static $templateData = array(
         // Déclaration produit (obligatoire)
         "50.00" => array(
-            "CODEXC" => null,
-            "SEPEXC" => null,
-            "SCOEXC" => null,
+            "CODEXC" => "50",
+            "SEPEXC" => ".",
+            "SCOEXC" => "00",
             "TRTEXC" => null,
             "NUMLIV" => null,
             "SNULIV" => null,
@@ -51,9 +51,9 @@ class M50 extends ModelAbstract
             "DISEXC" => null,
         ),
         "50.20" => array(
-            "CODEXC" => null,
-            "SEPEXC" => null,
-            "SCOEXC" => null,
+            "CODEXC" => "50",
+            "SEPEXC" => ".",
+            "SCOEXC" => "20",
             "TRTEXC" => null,
             "NUMLIV" => null,
             "SNULIV" => null,

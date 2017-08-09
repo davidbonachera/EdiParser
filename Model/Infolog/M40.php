@@ -45,9 +45,9 @@ class M40 extends ModelAbstract
             "DISEXC" => null,
         ),
         "40.20" => array(
-            "CODEXC" => null,
-            "SEPEXC" => null,
-            "SCOEXC" => null,
+            "CODEXC" => "40",
+            "SEPEXC" => ".",
+            "SCOEXC" => "20",
             "TRTEXC" => null,
             "NUMREC" => null,
             "SNUREC" => null,
