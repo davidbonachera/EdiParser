@@ -85,6 +85,19 @@ class M50 extends ModelAbstract
             "IGLSIT" => null,
             "DATFVI2" => null,
             "IMMFRG" => null,
+        ),
+        "50.99" => array(
+            "CODEXC" => "50",
+            "SEPEXC" => ".",
+            "SCOEXC" => "99",
+            "TRTEXC" => null,
+            "NUMLIV" => null,
+            "SNULIV" => null,
+            "CODACT" => null,
+            "CODCLI" => null,
+            "REFLIV" => null,
+            "CUMLIG" => null,
+            "DISEXC" => null,
         )
     );
     public static $validationTemplateData = array(
@@ -152,6 +165,19 @@ class M50 extends ModelAbstract
             "IGLSIT" => [ "length" => 3, "required" => FALSE ],
             "DATFVI2" => [ "length" => 8, "required" => FALSE ],
             "IMMFRG" => [ "length" => 3, "required" => FALSE ],
+        ),
+        "50.99" => array(
+            "CODEXC" => [ "length" => 2, "required" => TRUE ],
+            "SEPEXC" => [ "length" => 1, "required" => TRUE ],
+            "SCOEXC" => [ "length" => 2, "required" => TRUE ],
+            "TRTEXC" => [ "length" => 1, "required" => FALSE ],
+            "NUMLIV" => [ "length" => 8, "required" => FALSE ],
+            "SNULIV" => [ "length" => 3, "required" => FALSE ],
+            "CODACT" => [ "length" => 3, "required" => TRUE ],
+            "CODCLI" => [ "length" => 14, "required" => TRUE ],
+            "REFLIV" => [ "length" => 30, "required" => TRUE ],
+            "CUMLIG" => [ "length" => 4, "required" => TRUE ],
+            "DISEXC" => [ "length" => 188, "required" => FALSE ],
         )
     );
 

@@ -81,6 +81,17 @@ class M40 extends ModelAbstract
             "CODMDR" => null,
             "IGLSIT" => null,
             "INDUNI" => null,
+        ),
+        "40.99" => array(
+            "CODEXC" => "40",
+            "SEPEXC" => ".",
+            "SCOEXC" => "99",
+            "TRTEXC" => null,
+            "NUMREC" => null,
+            "SNUREC" => null,
+            "REFREC" => null,
+            "CUMLIG" => null,
+            "DISEXC" => null,
         )
     );
 
@@ -145,6 +156,17 @@ class M40 extends ModelAbstract
             "CODMDR" => [ "length" => 3, "required" => TRUE ],
             "IGLSIT" => [ "length" => 3, "required" => FALSE ],
             "INDUNI" => [ "length" => 1, "required" => FALSE ],
+        ),
+        "40.99" => array(
+            "CODEXC" => [ "length" => 2, "required" => TRUE ],
+            "SEPEXC" => [ "length" => 1, "required" => TRUE ],
+            "SCOEXC" => [ "length" => 2, "required" => TRUE ],
+            "TRTEXC" => [ "length" => 1, "required" => FALSE ],
+            "NUMREC" => [ "length" => 8, "required" => FALSE ],
+            "SNUREC" => [ "length" => 3, "required" => FALSE ],
+            "REFREC" => [ "length" => 30, "required" => TRUE ],
+            "CUMLIG" => [ "length" => 4, "required" => FALSE ],
+            "DISEXC" => [ "length" => 205, "required" => FALSE ],
         )
     );
 
