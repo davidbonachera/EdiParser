@@ -1,9 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Enigma
- * Date: 29/6/2017
- * Time: 6:21 PM
+ * This file is part of the EdiParser package.
+ *
+ * @package     EdiParserBundle
+ * @since       0.0.1
+ * @author      davidbonachera
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 namespace Boda\EdiParserBundle\Model;
 
@@ -92,6 +96,13 @@ abstract class ModelAbstract
     ];
 
     /**
+     * Footer
+     *
+     * @var array $footer
+     */
+    protected $footer = array();
+
+    /**
      * Footer Template
      *
      * @var array $templateFooter
@@ -143,11 +154,11 @@ abstract class ModelAbstract
     protected $data = array();
 
     /**
-     * Footer
+     * Data Rejected
      *
-     * @var array $footer
+     * @var array $dataRejected
      */
-    protected $footer = array();
+    protected $dataRejected = array();
 
     /**
      * Validation
@@ -162,22 +173,6 @@ abstract class ModelAbstract
      * @param bool $validation
      */
     public function __construct($validation = true)
-    {
-        $this->validation = $validation;
-    }
-
-    /**
-     * @return boolean $validation
-     */
-    public function isValidation()
-    {
-        return $this->validation;
-    }
-
-    /**
-     * @param boolean $validation
-     */
-    public function setValidation($validation)
     {
         $this->validation = $validation;
     }
@@ -219,25 +214,28 @@ abstract class ModelAbstract
 
     /**
      * @var array $data
+     * @var string $dataKey
      */
     public function insertOne($data, $dataKey)
     {
-        if ($this->validation) {
-            $this->validate($data, $this->getValidationTemplateData()[$dataKey]);
+        if ($this->validation && $this->getValidationTemplateData()[$dataKey]) {
+            $this->data[] = $data;
+        } else {
+            $this->dataRejected[] = $data;
         }
-        $this->data[] = $data;
     }
 
     /**
      * @var array $data
      */
-    public function insertAll($data)
+    public function insertGroup($data)
     {
         foreach ($data as $dataKey => $dataArray) {
             if ($this->validation && $this->validate($dataArray, $this->getValidationTemplateData()[$dataKey])) {
-                continue;
+                $this->data[] = $dataArray;
+            } else {
+                $this->dataRejected[] = $data;
             }
-            $this->data[] = $dataArray;
         }
     }
 
@@ -306,7 +304,7 @@ abstract class ModelAbstract
             } else {
                 if ($data[$key] === null) {
                     $err = v::nullType();
-                } elseif (is_numeric($data[$key])) {
+                } elseif (is_int($data[$key])) {
                     $err = v::intType()->length(null, $validation['length']);
                 } else {
                     $err = v::stringType()->length(null, $validation['length']);
@@ -322,4 +320,9 @@ abstract class ModelAbstract
         }
         return true;
     }
+
+    /**
+     * @return string
+     */
+    public abstract function __toString();
 }

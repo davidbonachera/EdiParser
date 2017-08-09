@@ -1,11 +1,14 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Enigma
- * Date: 29/6/2017
- * Time: 3:21 PM
+ * This file is part of the EdiParser package.
+ *
+ * @package     EdiParserBundle
+ * @since       0.0.1
+ * @author      davidbonachera
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-
 namespace Boda\EdiParserBundle\Parser;
 
 use Boda\EdiParserBundle\Model\ModelAbstract;
@@ -26,7 +29,7 @@ class Writer
 
     public function writeFile($path)
     {
-        $file = fopen($path."M20-".date("YmdHis").".txt", "w") or die("Unable to open file!");
+        $file = fopen($path.$this->getModel()->__toString().date("YmdHis").".txt", "w") or die("Unable to open/create file!");
         // Write Header
         $str = $this->writeLine($this->model->getHeader(), $this->model->getValidationTemplateHeader())."\n";
         fwrite($file, $str);
@@ -53,10 +56,15 @@ class Writer
             if(is_null($value)) {
                 $value = str_repeat(" ", $validationTemplate[$key]["length"]);
             } else {
-                if(!empty($validationTemplate[$key]["numerical"])) {
-                    $value = str_repeat("0", $validationTemplate[$key]["length"]-strlen($value)).$value;
-                } else {
-                    $value = $value.str_repeat(" ", $validationTemplate[$key]["length"]-strlen($value));
+                $offset = $validationTemplate[$key]["length"]-strlen($value);
+                if($offset>0) {
+                    if(!empty($validationTemplate[$key]["numerical"])) {
+                        $value = str_repeat("0", $offset).$value;
+                    } else {
+                        $value = $value.str_repeat(" ", $validationTemplate[$key]["length"]-strlen($value));
+                    }
+                } elseif ($offset<0) {
+                    continue;
                 }
 
             }
@@ -78,7 +86,15 @@ class Writer
         return $this->model->getTemplateFooter();
     }
 
-    public function setHeader(array $data) {
+    public function setHeader($modelName=null) {
+        $modelName = $modelName?$modelName:$this->getModel()->__toString();
+        $data = $this->getTemplateHeader();
+        $data["TRTEXC"]="1";
+        $data["DATEXC"]=date("Ymd");
+        $data["HEUEXC"]=date("His");
+        $data["RCTEXC"]="DATAQ ".$modelName;
+        $data["NOMDTQ"]=$modelName;
+        $data["LIBEXC"]=$modelName."|".date("m/d|H:i:s")."|HUBBLE";
         $this->model->setHeader($data);
     }
 
@@ -86,7 +102,12 @@ class Writer
         $this->model->insertOne($data, $dataKey);
     }
 
-    public function setFooter(array $data) {
+    public function setFooter(array $data, $modelName=null) {
+        $modelName = $modelName?$modelName:$this->getModel()->__toString();
+        $data["TRTEXC"]="1";
+        $data["DATEXC"]=date("Ymd");
+        $data["HEUEXC"]=date("His");
+        $data["RCTEXC"]="DATAQ ".$modelName;
         $this->model->setFooter($data);
     }
 

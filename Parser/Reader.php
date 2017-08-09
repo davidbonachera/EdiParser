@@ -1,11 +1,14 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Enigma
- * Date: 16/3/2017
- * Time: 4:59 PM
+ * This file is part of the EdiParser package.
+ *
+ * @package     EdiParserBundle
+ * @since       0.0.1
+ * @author      davidbonachera
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-
 namespace Boda\EdiParserBundle\Parser;
 
 class Reader
