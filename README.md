@@ -1,7 +1,7 @@
 Edi Parser Bundle
 ================
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/89292c47711045f88c2399f4499be3b6)](https://www.codacy.com/app/david.bonachera/EdiParser?utm_source=github.com&utm_medium=referral&utm_content=davidbonachera/EdiParser&utm_campaign=badger)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/89292c47711045f88c2399f4499be3b6)](https://www.codacy.com/app/david.bonachera/EdiParser?utm_source=github.com&utm_medium=referral&utm_content=davidbonachera/EdiParser&utm_campaign=badger) [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/davidbonachera/EdiParser)
 
 A simple positional edi parser to transform a string to a key-value array based on a template
 
