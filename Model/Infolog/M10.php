@@ -54,9 +54,9 @@ class M10 extends ModelAbstract
 
     public static $validationTemplateData = array(
         "10.00" => array(
-            "CODEXC" => [ "length" => 2, "required" => TRUE ],
+            "CODEXC" => [ "length" => 2, "required" => TRUE, "numerical" => TRUE],
             "SEPEXC" => [ "length" => 1, "required" => TRUE ],
-            "SCOEXC" => [ "length" => 2, "required" => TRUE ],
+            "SCOEXC" => [ "length" => 2, "required" => TRUE, "numerical" => TRUE],
             "TRTEXC" => [ "length" => 1, "required" => TRUE ],
             "CODACT" => [ "length" => 3, "required" => FALSE ],
             "CODFOU" => [ "length" => 14, "required" => TRUE ],
@@ -64,7 +64,7 @@ class M10 extends ModelAbstract
             "NOMFOU" => [ "length" => 30, "required" => TRUE ],
             "AD1FOU" => [ "length" => 30, "required" => TRUE ],
             "AD2FOU" => [ "length" => 30, "required" => FALSE ],
-            "CPOFOU" => [ "length" => 5, "required" => FALSE ],
+            "CPOFOU" => [ "length" => 5, "required" => FALSE, "numerical" => TRUE],
             "VILFOU" => [ "length" => 26, "required" => FALSE ],
             "PAYFOU" => [ "length" => 3, "required" => TRUE ],
             "TELFOU" => [ "length" => 20, "required" => FALSE ],
