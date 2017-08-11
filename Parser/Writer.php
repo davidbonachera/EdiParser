@@ -27,6 +27,13 @@ class Writer
         $this->setModel($model);
     }
 
+    /**
+     * Create & Write the whole positional file line by line and save it to a path
+     *
+     * @param string $path
+     *
+     * @return boolean
+     */
     public function writeFile($path)
     {
         $file = fopen($path.$this->getModel()->__toString().date("YmdHis").".txt", "w") or die("Unable to open/create file!");
@@ -47,6 +54,14 @@ class Writer
         return true;
     }
 
+    /**
+     * Parse a line array according to a template and return a positional string
+     *
+     * @param array $line
+     * @param array $validationTemplate
+     *
+     * @return string
+     */
     public function writeLine($line, $validationTemplate){
         $str = "";
         $pos = 0;
@@ -75,41 +90,76 @@ class Writer
         return $str;
     }
 
+    /**
+     * Get the default header template
+     *
+     * @return array
+     */
     public function getTemplateHeader(){
         return $this->model->getTemplateHeader();
     }
 
+    /**
+     * Get the default body/data template
+     *
+     * @return array
+     */
     public function getTemplateData(){
         return $this->model->getTemplateData();
     }
 
+    /**
+     * Get the default footer template
+     *
+     * @return array
+     */
     public function getTemplateFooter(){
         return $this->model->getTemplateFooter();
     }
 
-    public function setHeader($modelName=null) {
+    /**
+     * Set default header value.
+     *
+     * @param array $data An array of data to override default value
+     * @param string $modelName
+     */
+    public function setHeader(array $data, $modelName=null) {
         $modelName = $modelName?$modelName:$this->getModel()->__toString();
-        $data = $this->getTemplateHeader();
-        $data["TRTEXC"]="1";
-        $data["DATEXC"]=date("Ymd");
-        $data["HEUEXC"]=date("His");
-        $data["RCTEXC"]="DATAQ ".$modelName;
-        $data["NOMDTQ"]=$modelName;
-        $data["LIBEXC"]=$modelName."|".date("m/d|H:i:s")."|HUBBLE";
-        $this->model->setHeader($data);
+        $default = $this->getTemplateHeader();
+        $default["TRTEXC"]="1";
+        $default["DATEXC"]=date("Ymd");
+        $default["HEUEXC"]=date("His");
+        $default["RCTEXC"]="DATAQ ".$modelName;
+        $default["NOMDTQ"]=$modelName;
+        $default["LIBEXC"]=$modelName."|".date("m/d|H:i:s")."|HUBBLE";
+        $this->model->setHeader($default);
     }
 
+    /**
+     * Insert one line to the data model
+     *
+     * @param array $data,
+     * @param string $dataKey - Validation key to use when inserting the data @ToDo maybe its useless
+     */
     public function insertOne(array $data, $dataKey) {
         $this->model->insertOne($data, $dataKey);
     }
 
-    public function setFooter(array $data, $modelName=null) {
+    /**
+     * Set default footer value.
+     *
+     * @param array $data An array of data to override default value
+     * @param string $modelName
+     */
+    public function setFooter(array $data=null, $modelName=null) {
         $modelName = $modelName?$modelName:$this->getModel()->__toString();
-        $data["TRTEXC"]="1";
-        $data["DATEXC"]=date("Ymd");
-        $data["HEUEXC"]=date("His");
-        $data["RCTEXC"]="DATAQ ".$modelName;
-        $this->model->setFooter($data);
+        $default = $this->getTemplateHeader();
+        $default["TRTEXC"]="1";
+        $default["DATEXC"]=date("Ymd");
+        $default["HEUEXC"]=date("His");
+        $default["RCTEXC"]="DATAQ ".$modelName;
+        $default["CPTEXC"]=count($this->getModel()->getData());
+        $this->model->setFooter($default);
     }
 
     /**
@@ -126,5 +176,21 @@ class Writer
     public function setModel($model)
     {
         $this->model = $model;
+    }
+
+    /**
+     * WIP, for next version to override default data.
+     *
+     * @param array $arr1
+     * @param array $arr2
+     */
+    function arrayMergeIfNotNull($arr1, $arr2) {
+        foreach($arr2 as $key => $val) {
+            $is_set_and_not_null = isset($arr1[$key]);
+            if ( $val == NULL && $is_set_and_not_null ) {
+                $arr2[$key] = $arr1[$key];
+            }
+        }
+        return array_merge($arr1, $arr2);
     }
 }
