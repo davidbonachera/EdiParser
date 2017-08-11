@@ -218,7 +218,7 @@ abstract class ModelAbstract
      */
     public function insertOne($data, $dataKey)
     {
-        if ($this->validation && $this->getValidationTemplateData()[$dataKey]) {
+        if ($this->validation && $this->getValidationTemplateData()[$data["CODEXC"].$data["SEPEXC"].$data["SCOEXC"]]) {
             $this->data[] = $data;
         } else {
             $this->dataRejected[] = $data;
