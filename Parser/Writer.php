@@ -156,7 +156,7 @@ class Writer
      */
     public function setFooter($data=[], $modelName=null) {
         $modelName = $modelName?$modelName:$this->getModel()->__toString();
-        $default = $this->getTemplateHeader();
+        $default = $this->getTemplateFooter();
         $default["TRTEXC"]="1";
         $default["DATEXC"]=date("Ymd");
         $default["HEUEXC"]=date("His");
