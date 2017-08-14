@@ -44,7 +44,10 @@ class Writer
         // Write Data
         foreach ($data as $lineKey => $lineData) {
             // ToDo : Fix and find a way to identify the header in a proper way (cf end of line)
-            $str = $this->writeLine($lineData, $this->model->getValidationTemplateData()[$lineData["CODEXC"].$lineData["SEPEXC"].$lineData["SCOEXC"]])."\n";
+            $str = $this->writeLine(
+                    $lineData,
+                    $this->model->getValidationTemplateData()[$lineData["CODEXC"].$lineData["SEPEXC"].$lineData["SCOEXC"]]
+                )."\n";
             fwrite($file, $str);
         }
         // Write Footer
@@ -55,7 +58,7 @@ class Writer
     }
 
     /**
-     * Parse a line array according to a template and return a positional string
+     * Parse a key-value array (a line to write) according to a template and return a positional string
      *
      * @param array $line
      * @param array $validationTemplate
@@ -123,7 +126,7 @@ class Writer
      * @param array $data An array of data to override default value
      * @param string $modelName
      */
-    public function setHeader(array $data, $modelName=null) {
+    public function setHeader($data=[], $modelName=null) {
         $modelName = $modelName?$modelName:$this->getModel()->__toString();
         $default = $this->getTemplateHeader();
         $default["TRTEXC"]="1";
@@ -151,7 +154,7 @@ class Writer
      * @param array $data An array of data to override default value
      * @param string $modelName
      */
-    public function setFooter(array $data=null, $modelName=null) {
+    public function setFooter($data=[], $modelName=null) {
         $modelName = $modelName?$modelName:$this->getModel()->__toString();
         $default = $this->getTemplateHeader();
         $default["TRTEXC"]="1";
