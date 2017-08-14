@@ -29,63 +29,7 @@ public function registerBundles()
 Use it inside a controller
 
 ```php
-<?php
-class ParserController extends Controller
-{
-    /**
-     * @Route("/edi", name="edi")
-     */
-    public function indexAction(Request $request) {
-
-        $reader = $this->get('boda_edi_parser.reader');
-
-        $template =  [
-            "header" => [
-                "IDENTIFIER"=>2,
-                "DOT"=>1,
-                "NUMBER"=>2,
-                "TEST"=>1,
-                "HEADER"=>6,
-            ],
-            "body" => [
-                "41.00" => [
-                    "IDENTIFIER"=>2,
-                    "DOT"=>1,
-                    "NUMBER"=>2,
-                    "TEST"=>1,
-                    "CONTENT"=>8,
-                ],
-                "lines" => [
-                    "41.20" => [
-                        "IDENTIFIER"=>2,
-                        "DOT"=>1,
-                        "NUMBER"=>2,
-                        "TEST"=>1,
-                        "CONTENT"=>8,
-                        "SPACE"=>1,
-                        "SUBLINE"=>8
-                    ]
-                ]
-            ],
-            "footer" => [
-                "IDENTIFIER"=>2,
-                "DOT"=>1,
-                "NUMBER"=>2,
-                "TEST"=>1,
-                "CONTENT"=>6,
-            ]
-        ];
-        $rows = [
-            "00.00 HEADER",
-            "41.00 CONTENT1",
-            "41.20 CONTENT2 subline1",
-            "41.20 CONTENT2 subline2",
-            "41.00 CONTENT3",
-            "99.00 FOOTER"
-        ];
-        $resultEdi = $reader->parse($template, $rows);
-    }
-}
+@Todo : Rewrite example
 ```
 
 ### Result
@@ -136,3 +80,4 @@ Well, a lot of stuff to improve I guess, let's do a list
 
 - [ ] Customize with configuration (with or without header/footer, nested level)
 - [ ] Do some proper error handling for missing arguments
+- [ ] Define different model for differents EDI.
