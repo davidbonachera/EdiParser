@@ -193,6 +193,6 @@ class M50 extends ModelAbstract
 
     public function __toString()
     {
-        return "M40";
+        return "M50";
     }
 }

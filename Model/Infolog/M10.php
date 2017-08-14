@@ -95,6 +95,6 @@ class M10 extends ModelAbstract
 
     public function __toString()
     {
-        return "M20";
+        return "M10";
     }
 }
