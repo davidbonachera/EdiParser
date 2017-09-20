@@ -11,6 +11,8 @@
  */
 namespace Boda\EdiParserBundle\Parser;
 
+use Boda\EdiParserBundle\Model\ModelAbstract;
+
 class Reader
 {
     /**
@@ -18,20 +20,21 @@ class Reader
      */
     private $errors = [];
 
-    public function parse(array $template = [], array $rows = [], $identifierSize = 5)
+    public function parse(ModelAbstract $model, array $rows = [], $identifierSize = 5)
     {
-        if (empty($template)) {
-            $this->errors["template"] = "No template given";
+        if (empty($model)) {
+            $this->errors["model"] = "No model given";
             return false;
         }
         // Init array
         $myArray = [];
         // SubBody counter
         $j = 0;
-        $myArray["header"] = $this->formatLine($template["header"], $rows[0]);
+        $myArray["header"] = $this->formatLine($model->getHeader(), $rows[0]);
         for ($i = 1; $i < count($rows) - 1; $i++) {
-            foreach ($template["body"] as $index => $templateSubBody) {
-                if (substr($rows[$i], 0, $identifierSize) === $index) {
+            foreach ($model->getData() as $index => $templateSubBody) {
+                dump($templateSubBody);
+                /*if (substr($rows[$i], 0, $identifierSize) === $index) {
                     $myArray["body"][$j][] = $this->formatLine($templateSubBody, $rows[$i]);
                     $j++;
                     continue;
@@ -42,11 +45,11 @@ class Reader
                             $myArray["body"][$j][] = $this->formatLine($templateSubBody2, $rows[$i]);
                         }
                     }
-                }
+                }*/
             }
             continue;
         }
-        $myArray["footer"] = $this->formatLine($template["footer"], $rows[count($rows) - 1]);
+        $myArray["footer"] = $this->formatLine($model->getFooter(), $rows[count($rows) - 1]);
         return $myArray;
     }
 
