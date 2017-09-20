@@ -197,6 +197,17 @@ abstract class ModelAbstract
     }
 
     /**
+     * @var array $data
+     */
+    public function setFooter($data)
+    {
+        if ($this->validation) {
+            $this->validate($data, $this->getValidationTemplateFooter());
+        }
+        $this->footer = $data;
+    }
+
+    /**
      * @return array $footer
      */
     public function getFooter()
@@ -210,44 +221,6 @@ abstract class ModelAbstract
     public function getData()
     {
         return $this->data;
-    }
-
-    /**
-     * @var array $data
-     * @var string $dataKey
-     */
-    public function insertOne($data, $dataKey)
-    {
-        if ($this->validation && $this->getValidationTemplateData()[$dataKey]) {
-            $this->data[] = $data;
-        } else {
-            $this->dataRejected[] = $data;
-        }
-    }
-
-    /**
-     * @var array $data
-     */
-    public function insertGroup($data)
-    {
-        foreach ($data as $dataKey => $dataArray) {
-            if ($this->validation && $this->validate($dataArray, $this->getValidationTemplateData()[$dataKey])) {
-                $this->data[] = $dataArray;
-            } else {
-                $this->dataRejected[] = $data;
-            }
-        }
-    }
-
-    /**
-     * @var array $data
-     */
-    public function setFooter($data)
-    {
-        if ($this->validation) {
-            $this->validate($data, $this->getValidationTemplateFooter());
-        }
-        $this->footer = $data;
     }
 
     /**
@@ -290,6 +263,33 @@ abstract class ModelAbstract
     public function getValidationTemplateFooter()
     {
         return $this->validationTemplateFooter;
+    }
+
+    /**
+     * @var array $data
+     * @var string $dataKey
+     */
+    public function insertOne($data, $dataKey)
+    {
+        if ($this->validation && $this->getValidationTemplateData()[$data["CODEXC"].$data["SEPEXC"].$data["SCOEXC"]]) {
+            $this->data[] = $data;
+        } else {
+            $this->dataRejected[] = $data;
+        }
+    }
+
+    /**
+     * @var array $data
+     */
+    public function insertGroup($data)
+    {
+        foreach ($data as $dataKey => $dataArray) {
+            if ($this->validation && $this->validate($dataArray, $this->getValidationTemplateData()[$dataKey])) {
+                $this->data[] = $dataArray;
+            } else {
+                $this->dataRejected[] = $data;
+            }
+        }
     }
 
     /**
