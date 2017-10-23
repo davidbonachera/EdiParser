@@ -30,37 +30,33 @@ class Reader
         $myArray = [];
         // SubBody counter
         $j = 0;
-        $myArray["header"] = $this->formatLine($model->getHeader(), $rows[0]);
+        $myArray["header"] = $this->formatLine($model->getValidationTemplateHeader(), $rows[0]);
         for ($i = 1; $i < count($rows) - 1; $i++) {
-            foreach ($model->getData() as $index => $templateSubBody) {
-                dump($templateSubBody);
-                /*if (substr($rows[$i], 0, $identifierSize) === $index) {
-                    $myArray["body"][$j][] = $this->formatLine($templateSubBody, $rows[$i]);
-                    $j++;
+            foreach ($model->getValidationTemplateData() as $validationIdentifier => $templateSubBody) {
+                $lineIdentifier = substr($rows[$i], 0, $identifierSize);
+                if ($lineIdentifier === $validationIdentifier) {
+                    $myArray["lines"][$j][] = $this->formatLine($templateSubBody, $rows[$i]);
+                    // group lines by detecting footer identifier
+                    if(substr($lineIdentifier,-2)==="99"){
+                        $j++;
+                    }
                     continue;
                 }
-                if (is_array($templateSubBody)) {
-                    foreach ($templateSubBody as $index2 => $templateSubBody2) {
-                        if (substr($rows[$i], 0, $identifierSize) === $index2) {
-                            $myArray["body"][$j][] = $this->formatLine($templateSubBody2, $rows[$i]);
-                        }
-                    }
-                }*/
             }
             continue;
         }
-        $myArray["footer"] = $this->formatLine($model->getFooter(), $rows[count($rows) - 1]);
+        $myArray["footer"] = $this->formatLine($model->getValidationTemplateFooter(), $rows[count($rows) - 1]);
         return $myArray;
     }
 
     public function formatLine($template, $data, $position = 0)
     {
         $myData = [];
-        foreach ($template as $index => $length) {
+        foreach ($template as $index => $rules) {
             // add current field to array with the named value
-            $myData[$index] = substr($data, $position, $length);
+            $myData[$index] = trim(substr($data, $position, $rules['length']));
             // move the 'pointer' to the start of the next field
-            $position += $length;
+            $position += $rules['length'];
         }
         return $myData;
     }
