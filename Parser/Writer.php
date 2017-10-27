@@ -72,7 +72,12 @@ class Writer
         foreach ($line as $key => $value) {
             $i++;
             if(is_null($value)) {
-                $value = str_repeat(" ", $validationTemplate[$key]["length"]);
+                if(empty($validationTemplate[$key]["numerical"])) {
+                    $value = str_repeat(" ", $validationTemplate[$key]["length"]);
+                } else {
+                    $value = str_repeat("0", $validationTemplate[$key]["length"]);
+                }
+
             } else {
                 $offset = $validationTemplate[$key]["length"]-strlen($value);
                 if($offset>0) {
