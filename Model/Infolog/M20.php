@@ -33,7 +33,7 @@ class M20 extends ModelAbstract
             "CLILIV"=> null,
             "EDICLI"=> null,
             "NOMCLI"=> null,
-            "AD1CLI"=> null,
+            "AD1CLI"=> "FRANCE",
             "AD2CLI"=> null,
             "CPOCLI"=> null,
             "VILCLI"=> null,
