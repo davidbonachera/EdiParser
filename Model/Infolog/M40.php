@@ -34,7 +34,7 @@ class M40 extends ModelAbstract
             "CODTRE" => null,
             "CODACT" => null,
             "CODFOU" => null,
-            "CODTRA" => null,
+            "CODTRA" => "CARRIER",
             "DTIREC" => null,
             "HEIREC" => null,
             "KAIREC" => null,

@@ -49,8 +49,8 @@ class M30 extends ModelAbstract
             "HAUCOL" => 1,
             "LNGCOL" => 1,
             "LRGCOL" => 1,
-            "COLCOU" => 10001, // Auto add 0 at the beggining
-            "COUPAL" => 990099, // Auto add 0 at the beggining
+            "COLCOU" => 990099, // Auto add 0 at the beggining
+            "COUPAL" => 10001, // Auto add 0 at the beggining
             "GERPAL" => null,
             "GERHAU" => null,
             "HAUCOU" => null,
@@ -67,7 +67,7 @@ class M30 extends ModelAbstract
             "CODADM" => null,
             "HOMGRB" => null,
             "PERGRB" => null,
-            "CODMDP" => null,
+            "CODMDP" => "STD",
             "TOPPRN" => null,
             "DISEXC" => null,
         ),
@@ -120,7 +120,7 @@ class M30 extends ModelAbstract
             "CODADM" => [ "length" => 3, "required" => FALSE ],
             "HOMGRB" => [ "length" => 1, "required" => FALSE ],
             "PERGRB" => [ "length" => 3, "required" => FALSE, "numerical" => TRUE],
-            "CODMDP" => [ "length" => 3, "required" => FALSE, "numerical" => TRUE],
+            "CODMDP" => [ "length" => 3, "required" => FALSE ],
             "TOPPRN" => [ "length" => 1, "required" => FALSE ],
             "DISEXC" => [ "length" => 2, "required" => FALSE ],
         )
