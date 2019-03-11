@@ -71,6 +71,23 @@ class M30 extends ModelAbstract
             "TOPPRN" => null,
             "DISEXC" => null,
         ),
+        "30.10" => array(
+            "CODEXC" => "30",
+            "SEPEXC" => ".",
+            "SCOEXC" => "00",
+            "TRTEXC" => null,
+            "CODACT" => "I2L",
+            "CODPRN " => null,
+            "CODPRO " => null,
+            "VALPRO" => null,
+            "NBRCPS" => null,
+            "ACTCPS" => null,
+            "ORDCPS" => null,
+            "TYPCPS" => null,
+            "DVSCPS" => null,
+            "UNIPRN" => null,
+            "DISEXC" => null,
+        ),
     );
 
     public static $validationTemplateData = array(
@@ -123,7 +140,24 @@ class M30 extends ModelAbstract
             "CODMDP" => [ "length" => 3, "required" => FALSE ],
             "TOPPRN" => [ "length" => 1, "required" => FALSE ],
             "DISEXC" => [ "length" => 2, "required" => FALSE ],
-        )
+        ),
+        "30.10" => array(
+            "CODEXC" => [ "length" => 2, "required" => TRUE ],
+            "SEPEXC" => [ "length" => 1, "required" => TRUE ],
+            "SCOEXC" => [ "length" => 2, "required" => TRUE ],
+            "TRTEXC " => [ "length" => 1, "required" => TRUE ],
+            "CODACT " => [ "length" => 3, "required" => TRUE ],
+            "CODPRN " => [ "length" => 17, "required" => TRUE ],
+            "CODPRO " => [ "length" => 17, "required" => TRUE ],
+            "VALPRO" => [ "length" => 2, "required" => TRUE, "numerical" => TRUE ],
+            "NBRCPS" => [ "length" => 4, "required" => TRUE, "numerical" => TRUE ],
+            "ACTCPS" => [ "length" => 3, "required" => FALSE ],
+            "ORDCPS" => [ "length" => 4, "required" => FALSE, "numerical" => TRUE ],
+            "TYPCPS" => [ "length" => 1, "required" => FALSE ],
+            "DVSCPS" => [ "length" => 4, "required" => FALSE, "numerical" => TRUE ],
+            "UNIPRN" => [ "length" => 3, "required" => FALSE ],
+            "DISEXC" => [ "length" => 192, "required" => FALSE ],
+        ),
     );
 
     public function getTemplateData()
