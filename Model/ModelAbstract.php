@@ -55,7 +55,7 @@ abstract class ModelAbstract
         "BIBDST" => null,
         "PGMDST" => null,
         "PARDST" => null,
-        "CODACT" => "I2L",
+        "CODACT" => "BIW",
         "IGLSIT" => "000",
         "EDISIT" => null,
         "IMAEXC" => "00000000",
