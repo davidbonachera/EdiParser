@@ -26,7 +26,7 @@ class M30 extends ModelAbstract
             "SEPEXC" => ".",
             "SCOEXC" => "00",
             "TRTEXC" => null,
-            "CODACT" => "I2L",
+            "CODACT" => null,
             "CODPRO" => null,
             "VALPRO" => null,
             "DS1PRO" => null,

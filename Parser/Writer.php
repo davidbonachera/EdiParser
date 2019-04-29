@@ -135,12 +135,14 @@ class Writer
         $modelName = $modelName?$modelName:$this->getModel()->__toString();
         $default = $this->getTemplateHeader();
         $default["TRTEXC"]="1";
-        $default["CODACT"]=$data['CODACT']?$data['CODACT']:'I2L';
+        $default["CODACT"]=$data['CODACT']?$data['CODACT']:'';
+        $default["BIBDTQ"]=$data['BIBDTQ']?$data['BIBDTQ']:'';
+        $default["EMTEXC"]=$data['EMTEXC']?$data['EMTEXC']:'';
         $default["DATEXC"]=date("Ymd");
         $default["HEUEXC"]=date("His");
         $default["RCTEXC"]="DATAQ ".$modelName;
         $default["NOMDTQ"]=$modelName;
-        $default["LIBEXC"]=$modelName."|".date("m/d|H:i:s")."|HUBBLE";
+        $default["LIBEXC"]=$modelName."|".date("m/d|H:i:s")."|".$data['EMTEXC'];
         $this->model->setHeader($default);
     }
 
