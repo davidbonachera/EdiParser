@@ -95,7 +95,7 @@ class Writer
             $str = substr_replace($str, $value, $pos, 0);
             $pos += $validationTemplate[$key]["length"];
         };
-        return $str;
+        return strtoupper($str);
     }
 
     /**
