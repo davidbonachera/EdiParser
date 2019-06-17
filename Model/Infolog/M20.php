@@ -26,7 +26,7 @@ class M20 extends ModelAbstract
             "SEPEXC"=> ".",
             "SCOEXC"=> "00",
             "TRTEXC"=> null,
-            "CODACT"=> "I2L",
+            "CODACT"=> null,
             "CODCLI"=> null,
             "TYPCLI"=> "1",
             "CATCLI"=> "001",

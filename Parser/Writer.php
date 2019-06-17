@@ -95,7 +95,7 @@ class Writer
             $str = substr_replace($str, $value, $pos, 0);
             $pos += $validationTemplate[$key]["length"];
         };
-        return $str;
+        return strtoupper($str);
     }
 
     /**
@@ -134,12 +134,15 @@ class Writer
     public function setHeader($data=[], $modelName=null) {
         $modelName = $modelName?$modelName:$this->getModel()->__toString();
         $default = $this->getTemplateHeader();
-        $default["TRTEXC"]="1";
-        $default["DATEXC"]=date("Ymd");
-        $default["HEUEXC"]=date("His");
-        $default["RCTEXC"]="DATAQ ".$modelName;
-        $default["NOMDTQ"]=$modelName;
-        $default["LIBEXC"]=$modelName."|".date("m/d|H:i:s")."|HUBBLE";
+        $default["TRTEXC"] = "1";
+        $default["CODACT"] = array_key_exists('CODACT',$data)?$data['CODACT']:'';
+        $default["BIBDTQ"] = array_key_exists('BIBDTQ',$data)?$data['BIBDTQ']:'';
+        $default["EMTEXC"] = array_key_exists('EMTEXC',$data)?$data['EMTEXC']:'';
+        $default["DATEXC"] = date("Ymd");
+        $default["HEUEXC"] = date("His");
+        $default["RCTEXC"] = "DATAQ ".$modelName;
+        $default["NOMDTQ"] = $modelName;
+        $default["LIBEXC"] = $modelName."|".date("m/d|H:i:s")."|".array_key_exists('EMTEXC',$data)?$data['EMTEXC']:'';
         $this->model->setHeader($default);
     }
 

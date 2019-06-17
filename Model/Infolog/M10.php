@@ -27,7 +27,7 @@ class M10 extends ModelAbstract
             "SEPEXC" => ".",
             "SCOEXC" => "00",
             "TRTEXC" => null,
-            "CODACT" => "I2L",
+            "CODACT" => null,
             "CODFOU" => null,
             "TYPFOU" => null,
             "NOMFOU" => null,
