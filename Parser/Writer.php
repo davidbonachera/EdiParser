@@ -149,7 +149,7 @@ class Writer
 		$default["HEUEXC"] = date("His");
 		$default["RCTEXC"] = "DATAQ ".$modelName;
 		$default["NOMDTQ"] = $modelName;
-		$default["LIBEXC"] = $modelName."|".date("m/d|H:i:s")."|".array_key_exists('EMTEXC', $data) ? $data['EMTEXC'] : '';
+		$default["LIBEXC"] = $modelName."|".date("m/d|H:i:s")."|HUB-".(array_key_exists('CODACT', $data) ? $data['CODACT'] : '');
 		$this->model->setHeader($default);
 	}
 
