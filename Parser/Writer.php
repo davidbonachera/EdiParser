@@ -57,8 +57,7 @@ class Writer
 		// Write Footer
 		$str = $this->writeLine($this->model->getFooter(), $this->model->getValidationTemplateFooter())."\n";
 		fwrite($file, $str);
-		rename($path."T".$this->getModel()->__toString().date("YmdHis").".txt",
-			$path.$this->getModel()->__toString().date("YmdHis").".txt");
+		rename($path."TMPEDI.txt", $path.$this->getModel()->__toString().date("YmdHis").".txt");
 		fclose($file);
 		return true;
 	}
